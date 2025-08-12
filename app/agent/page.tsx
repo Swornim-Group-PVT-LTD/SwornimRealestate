@@ -104,6 +104,7 @@ const Agent = () => {
                       <Button
                         id="agentButton"
                         className="w-full  text-white duration-300"
+                        style={{ backgroundColor: "#14383f" }}
                       >
                         View Details
                       </Button>

@@ -174,7 +174,7 @@ const Search = () => {
   };
 
   return (
-    <div className="flex justify-center mx-auto">
+    <div className="flex justify-center mx-auto rounded-lg">
       <div id={Styles.desktopView}>
         <div className={Styles.fixedFormContainer}>
           <form className="mx-auto p-4 shadow-md rounded-lg">
