@@ -191,7 +191,7 @@ const ServiceWiseProduct: React.FC<ServiceProductProps> = ({ params }) => {
 
     if (paginatedProducts.length === 0) {
       return (
-        <div className="text-center text-gray-500">
+        <div className="text-center text-blue-900">
           {title === "Build" ? "Comming Soon." : "No Products Found."}
         </div>
       );
@@ -199,7 +199,7 @@ const ServiceWiseProduct: React.FC<ServiceProductProps> = ({ params }) => {
 
     return (
       <>
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mb-20">
           {paginatedProducts.map(renderProductCard)}
         </div>
         <div className="mt-8 flex justify-end">
@@ -216,10 +216,10 @@ const ServiceWiseProduct: React.FC<ServiceProductProps> = ({ params }) => {
   return (
     <div
       className="px-4 pt-16 md:pt-0 sm:px-6 lg:px-8"
-      style={{ backgroundColor: "#14222d" }}
+      style={{ backgroundColor: "#fffcfcff" }}
     >
       <div className="max-w-7xl mx-auto md:py-8">
-        <h2 className="text-3xl md:text-4xl text-center font-bold text-sky-50 mb-6">
+        <h2 className="text-3xl md:text-4xl text-center font-bold text-blue-900 mb-6">
           {title === "Sale" ? "Sale with us" : title}
         </h2>
 

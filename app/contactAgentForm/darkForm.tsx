@@ -133,8 +133,8 @@ const ContactAgentFormDark: React.FC = () => {
   };
 
   return (
-    <div className="m-10 ">
-      <h1 className={`text-2xl font-bold mb-5 text-white`}>Contact Agent</h1>
+    <div className="m-10">
+      <h1 className={`text-2xl font-bold mb-5`}>Contact Agent</h1>
       <hr />
       <form className="flex flex-col gap-6 mt-10" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
@@ -142,7 +142,6 @@ const ContactAgentFormDark: React.FC = () => {
             <Label
               htmlFor="firstName"
               value="First Name"
-              className="text-white"
             />
             <TextInput
               id="firstName"
@@ -156,7 +155,6 @@ const ContactAgentFormDark: React.FC = () => {
             <Label
               htmlFor="lastName"
               value="Last Name"
-              className="text-white"
             />
             <TextInput
               id="lastName"
@@ -170,7 +168,6 @@ const ContactAgentFormDark: React.FC = () => {
             <Label
               htmlFor="phonenumber"
               value="Phone Number"
-              className="text-white"
             />
             <TextInput
               id="phonenumber"
@@ -238,7 +235,6 @@ const ContactAgentFormDark: React.FC = () => {
             <Label
               htmlFor="agent"
               value="Select Agent"
-              className="text-white"
             />
             <Select
               id="agent"
@@ -260,7 +256,6 @@ const ContactAgentFormDark: React.FC = () => {
           <Label
             htmlFor="queryMessgae"
             value="Your Message"
-            className="text-white"
           />{" "}
           {/* Match the Swagger sample's field name */}
           <Textarea

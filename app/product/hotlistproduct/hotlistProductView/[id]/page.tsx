@@ -299,20 +299,20 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
 
   return (
     <>
-      <div className="container mx-auto mt-10 mb-10 px-4 sm:px-0">
+      <div className="mr-5 ml-5 mx-auto mt-10 mb-10 px-4 sm:px-0">
         <div className="items-center justify-center">
           {imageLoading && <Spinner size="xl" />}
         </div>
-        <Card style={{ backgroundColor: "#14222d" }}>
+        <Card style={{ backgroundColor: "#fffcfcff" }}>
           <div className="flex flex-wrap gap-2">
             <Badge color="warning" size="md">
               {productData.propertyStatusValue}
             </Badge>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-white">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <h1 className="text-xl sm:text-2xl">{productData.productName}</h1>
-              <span className="text-xs sm:text-sm text-white-700 dark:text-white-400">
+              <span className="text-xs sm:text-sm">
                 {productData.address}
               </span>
             </div>
@@ -340,13 +340,8 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
             {productData.roomCount < 1 ? (
               ""
             ) : (
-              <span className="inline-flex items-center text-l text-white sm:text-sm font-bold">
-                <Image
-                  src={Bedroom}
-                  alt="Bedroom Icon"
-                  width={20}
-                  height={20}
-                  className="invert"
+              <span className="inline-flex items-center text-l sm:text-sm font-bold">
+                <FaBath
                 />
                 &nbsp;
                 <span>{productData.roomCount} Room</span>
@@ -356,7 +351,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
             {productData.bathRoomCount < 1 ? (
               ""
             ) : (
-              <span className="inline-flex items-center text-l text-white sm:text-sm font-bold">
+              <span className="inline-flex items-center text-l sm:text-sm font-bold">
                 <FaBath /> &nbsp;
                 <span>{productData.bathRoomCount} Bathroom</span>
               </span>
@@ -365,7 +360,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
             {productData.area < 1 ? (
               ""
             ) : (
-              <span className="inline-flex items-center text-l text-white sm:text-sm font-bold">
+              <span className="inline-flex items-center text-l sm:text-sm font-bold">
                 <HiCalendar /> &nbsp;
                 <span>{productData.area} m.sq </span>
               </span>
@@ -373,7 +368,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
             {productData.parkingCount < 1 ? (
               ""
             ) : (
-              <span className="inline-flex items-center text-l text-white sm:text-sm font-bold">
+              <span className="inline-flex items-center text-l sm:text-sm font-bold">
                 <FaCarAlt /> &nbsp;
                 <span>{productData.parkingCount} Parking Space</span>
               </span>
@@ -381,8 +376,8 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
           </div>
         </Card>
       </div>
-      <div className="container mx-auto mt-10 mb-10 px-4 sm:px-0">
-        <Card style={{ backgroundColor: "#14222d" }}>
+      <div className="mr-5 ml-5  mx-auto mt-10 mb-10 px-4 sm:px-0">
+        <Card style={{ backgroundColor: "#fffcfcff" }}>
           <div className="flex flex-col items-center">
             <div>
               <PhotoProvider
@@ -395,7 +390,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                         onClick={() => onScale(scale + 1)}
                       >
                         <svg
-                          className="w-6 h-6 text-white"
+                          className="w-6 h-6"
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -416,7 +411,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                         onClick={() => onScale(scale - 1)}
                       >
                         <svg
-                          className="w-6 h-6 text-white"
+                          className="w-6 h-6"
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -437,7 +432,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                         onClick={() => onRotate(rotate + 90)}
                       >
                         <svg
-                          className="w-6 h-6 text-white"
+                          className="w-6 h-6"
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -462,7 +457,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                         >
                           {fullScreen ? (
                             <svg
-                              className="w-6 h-6 text-white"
+                              className="w-6 h-6"
                               aria-hidden="true"
                               xmlns="http://www.w3.org/2000/svg"
                               width="24"
@@ -480,7 +475,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                             </svg>
                           ) : (
                             <svg
-                              className="w-6 h-6 text-white"
+                              className="w-6 h-6"
                               aria-hidden="true"
                               xmlns="http://www.w3.org/2000/svg"
                               width="24"
@@ -543,7 +538,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
           </div>
         </Card>
       </div>
-      <div className="container mx-auto mt-10 mb-10 px-4 sm:px-0">
+      <div className="mr-5 ml-5 mx-auto mt-10 mb-10 px-4 sm:px-0">
         {/* Conditional rendering based on screen size */}
         {isMobile ? (
           <Accordion aria-label="Full width accordion">
@@ -663,11 +658,11 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                     </Card>
 
                     <Modal show={openModal} onClose={() => setOpenModal(false)}>
-                      <Modal.Header style={{ backgroundColor: "#14222d" }}>
-                        <div className="text-white"> Upload Instructions</div>
+                      <Modal.Header style={{ backgroundColor: "#fffcfcff" }}>
+                        <div className=""> Upload Instructions</div>
                       </Modal.Header>
-                      <Modal.Body style={{ backgroundColor: "#14222d" }}>
-                        <p className="text-white">
+                      <Modal.Body style={{ backgroundColor: "#fffcfcff" }}>
+                        <p className="">
                           Please select your files and confirm to upload them.
                           Files must be in .jpg or .png format
                         </p>
@@ -676,7 +671,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {/* First Name */}
                             <div>
-                              <Label htmlFor="firstName" className="text-white">
+                              <Label htmlFor="firstName" className="">
                                 First Name
                               </Label>
                               <TextInput
@@ -693,7 +688,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                             <div>
                               <Label
                                 htmlFor="middleName"
-                                className="text-white"
+                                className=""
                               >
                                 Middle Name
                               </Label>
@@ -709,7 +704,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
 
                             {/* Last Name */}
                             <div>
-                              <Label htmlFor="lastName" className="text-white">
+                              <Label htmlFor="lastName" className="">
                                 Last Name
                               </Label>
                               <TextInput
@@ -726,7 +721,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                             <div>
                               <Label
                                 htmlFor="phoneNumber"
-                                className="text-white"
+                                className=""
                               >
                                 Phone Number
                               </Label>
@@ -742,7 +737,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
 
                             {/* Address */}
                             <div>
-                              <Label htmlFor="address" className="text-white">
+                              <Label htmlFor="address" className="">
                                 Address
                               </Label>
                               <TextInput
@@ -757,7 +752,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
 
                             {/* Email */}
                             <div>
-                              <Label htmlFor="email" className="text-white">
+                              <Label htmlFor="email" className="">
                                 Your Email
                               </Label>
                               <TextInput
@@ -775,7 +770,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
 
                           {/* Description */}
                           <div className="flex flex-col">
-                            <Label htmlFor="description" className="text-white">
+                            <Label htmlFor="description" className="">
                               Your Message
                             </Label>
                             <Textarea
@@ -792,7 +787,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                           <div className="flex flex-col">
                             <Label
                               htmlFor="applicationFormFile"
-                              className="text-white"
+                              className=""
                             >
                               Application Request
                             </Label>
@@ -801,14 +796,14 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                               name="applicationFormFile"
                               multiple
                               onChange={handleFileChange}
-                              className="text-white"
+                              className=""
                             />
                             <ul>
                               {formData.applicationFormFile.map(
                                 (file, index) => (
                                   <li
                                     key={index}
-                                    className="text-sm text-white flex justify-between p-4 bg-slate-700 my-3"
+                                    className="text-sm flex justify-between p-4 bg-slate-700 my-3"
                                   >
                                     {file.name}
                                     <button
@@ -825,7 +820,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                         </form>
 
                         <Button
-                          className=" text-white px-4 py-2 rounded mt-4 w-full"
+                          className=" px-4 py-2 rounded mt-4 w-full"
                           style={{ backgroundColor: "#F8BC4C" }}
                           onClick={handleConfirm}
                           disabled={formData.applicationFormFile.length === 0}
@@ -851,8 +846,8 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
             </Accordion.Panel>
           </Accordion>
         ) : (
-          <Card style={{ backgroundColor: "#14222d" }}>
-            <div className="overflow-x-auto text-white">
+          <Card style={{ backgroundColor: "#fffcfcff" }}>
+            <div className="overflow-x-auto">
               <Tabs aria-label="Full width tabs">
                 <Tabs.Item active title="Description" icon={HiUserCircle}>
                   <div
@@ -976,11 +971,11 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                       size="8xl"
                       className="p-72"
                     >
-                      <Modal.Header style={{ backgroundColor: "#14222d" }}>
-                        <div className="text-white"> Upload Instructions</div>
+                      <Modal.Header style={{ backgroundColor: "#fffcfcff" }}>
+                        <div className=""> Upload Instructions</div>
                       </Modal.Header>
-                      <Modal.Body style={{ backgroundColor: "#14222d" }}>
-                        <p className="text-white">
+                      <Modal.Body style={{ backgroundColor: "#fffcfcff" }}>
+                        <p className="">
                           Please select your files and confirm to upload them.
                           Files must be in .jpg or .png format
                         </p>
@@ -989,7 +984,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {/* First Name */}
                             <div>
-                              <Label htmlFor="firstName" className="text-white">
+                              <Label htmlFor="firstName" className="">
                                 First Name
                               </Label>
                               <TextInput
@@ -1006,7 +1001,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                             <div>
                               <Label
                                 htmlFor="middleName"
-                                className="text-white"
+                                className=""
                               >
                                 Middle Name
                               </Label>
@@ -1022,7 +1017,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
 
                             {/* Last Name */}
                             <div>
-                              <Label htmlFor="lastName" className="text-white">
+                              <Label htmlFor="lastName" className="">
                                 Last Name
                               </Label>
                               <TextInput
@@ -1039,7 +1034,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                             <div>
                               <Label
                                 htmlFor="phoneNumber"
-                                className="text-white"
+                                className=""
                               >
                                 Phone Number
                               </Label>
@@ -1055,7 +1050,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
 
                             {/* Address */}
                             <div>
-                              <Label htmlFor="address" className="text-white">
+                              <Label htmlFor="address" className="">
                                 Address
                               </Label>
                               <TextInput
@@ -1070,7 +1065,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
 
                             {/* Email */}
                             <div>
-                              <Label htmlFor="email" className="text-white">
+                              <Label htmlFor="email" className="">
                                 Your Email
                               </Label>
                               <TextInput
@@ -1088,7 +1083,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
 
                           {/* Description */}
                           <div className="flex flex-col">
-                            <Label htmlFor="description" className="text-white">
+                            <Label htmlFor="description" className="">
                               Your Message
                             </Label>
                             <Textarea
@@ -1105,7 +1100,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                           <div className="flex flex-col">
                             <Label
                               htmlFor="applicationFormFile"
-                              className="text-white"
+                              className="t"
                             >
                               Application Request
                             </Label>
@@ -1120,7 +1115,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                                 (file, index) => (
                                   <li
                                     key={index}
-                                    className="text-sm text-white flex justify-between p-4 bg-slate-700 my-3"
+                                    className="text-sm flex justify-between p-4 bg-slate-700 my-3"
                                   >
                                     {file.name}
                                     <button
@@ -1137,7 +1132,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
                         </form>
 
                         <Button
-                          className=" text-white px-4 py-2 rounded mt-4 w-full"
+                          className="px-4 py-2 rounded mt-4 w-full"
                           style={{ backgroundColor: "#F8BC4C" }}
                           onClick={handleConfirm}
                           disabled={formData.applicationFormFile.length === 0}
@@ -1159,7 +1154,7 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
               <div className="hidden sm:block w-full">
                 <Card
                   className="max-w-full "
-                  style={{ backgroundColor: "#14222d" }}
+                  style={{ backgroundColor: "#fffcfcff" }}
                 >
                   <ContactAgentFormDark />
                 </Card>
@@ -1175,11 +1170,11 @@ const HotlistByIdView: React.FC<UpdateHotlistById> = ({ params }) => {
           className="pt-96 lg:pt-0"
           size="7xl"
         >
-          <Modal.Header style={{ backgroundColor: "#14222d" }}>
-            <div className="text-white"> Form Submitted Successfully</div>
+          <Modal.Header style={{ backgroundColor: "#fffcfcff" }}>
+            <div className=""> Form Submitted Successfully</div>
           </Modal.Header>
-          <Modal.Body style={{ backgroundColor: "#14222d" }}>
-            <p className="text-white">
+          <Modal.Body style={{ backgroundColor: "#fffcfcff" }}>
+            <p className="">
               Thank you for the Application Submit. Will reach you within 24 hr.
             </p>
           </Modal.Body>

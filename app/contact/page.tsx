@@ -14,10 +14,7 @@ const Contact = () => {
     <div className="container mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="mt-10 mb-10">
-          <div
-            className="card bg-white shadow-md rounded px-6 py-4"
-            style={{ backgroundColor: "#14222d", color: "#fff" }}
-          >
+          <div className="card bg-white shadow-md rounded px-6 py-4">
             <h1 className="text-xl font-bold mb-4">Contact Us</h1>
             <div className="space-y-2">
               <p className="flex items-center">
@@ -46,10 +43,7 @@ const Contact = () => {
             </div>
           </div>
           {/* Embed Google Map */}
-          <div
-            className="card  shadow-md rounded px-6 py-4 mt-10 mb-10"
-            style={{ backgroundColor: "#14222d", color: "#fff" }}
-          >
+          <div className="card  shadow-md rounded px-6 py-4 mt-10 mb-10">
             <h1 className="text-xl font-bold mb-4">Our Location</h1>
             <div className="map-container">
               <iframe
@@ -74,7 +68,6 @@ const Contact = () => {
         <div className="hidden md:block col-span-1">
           <div
             className="card  shadow-md rounded px-6 py-4 mt-10"
-            style={{ backgroundColor: "#14222d" }}
           >
             <ContactAgentFormDark />
           </div>
@@ -83,7 +76,6 @@ const Contact = () => {
       <div className="md:hidden">
         <div
           className="card  shadow-md rounded px-6 py-4"
-          style={{ backgroundColor: "#14222d" }}
         >
           <ContactAgentFormDark />
         </div>

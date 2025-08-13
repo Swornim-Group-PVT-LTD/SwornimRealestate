@@ -59,9 +59,9 @@ const Agent = () => {
   };
 
   return (
-    <div className=" py-16" style={{ backgroundColor: "#fff" }}>
+    <div className="py-16 mb-20" style={{ backgroundColor: "#fff" }}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center  mb-12 text-blue-900">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 text-blue-900">
           Meet Our Team
         </h2>
 

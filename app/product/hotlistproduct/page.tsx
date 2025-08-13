@@ -99,7 +99,7 @@ const LatestProductView: React.FC = () => {
     <div className="p-10">
       <div className="mx-auto max-w-7xl px-4 md:py-16 pt-5 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl text-center font-bold mb-7 text-white">
-          Buy and Rent
+          Recent On Sale and Rent
         </h2>
         {/* Search Box */}
         <div className="mb-6 flex flex-col sm:flex-row justify-center sm:justify-end gap-2">

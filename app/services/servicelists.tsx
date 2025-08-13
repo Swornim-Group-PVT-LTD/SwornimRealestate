@@ -83,7 +83,7 @@ const ServiceLists: React.FC = () => {
   };
 
   return (
-    <div className="py-14" style={{ backgroundColor: "#fff" }}>
+    <div className="py-14 mb-10" style={{ backgroundColor: "#fff" }}>
       <h2 className="mb-7 pt-7 text-3xl md:text-4xl text-center font-bold text-blue-900">
         Our Services
       </h2>
@@ -97,7 +97,7 @@ const ServiceLists: React.FC = () => {
         </div>
       ) : (
         <div className="container mx-auto pt-7 pb-7 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {serviceLists
               .filter((service) => service.status === true)
               .map((service) => (

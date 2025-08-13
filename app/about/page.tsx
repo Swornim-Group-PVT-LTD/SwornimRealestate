@@ -1,15 +1,13 @@
 "use client";
 import Image from "next/image";
 import { Card, Accordion, Button } from "flowbite-react";
-import Founder from "./images/founder.jpg";
 import Contact from "../contact/page";
 import { FaArrowRight } from "react-icons/fa6";
-import ContactAgentForm from "../contactAgentForm/page";
 
 function About() {
   return (
-    <div className="bg-slate-700 ">
-      <div className="  text-center relative text-white font-bold text-5xl py-28 bg-[url('./about/images/hero.jpg')] bg-no-repeat bg-cover bg-left hidden sm:block ">
+    <div className="">
+      <div className="  text-center relative text-white font-bold text-5xl py-28" style={{ backgroundColor: "#607b83ff" }}>
         <div className="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
         <span className="absolute inset-0 flex items-center justify-center z-10 text-white">
           About Us
@@ -17,14 +15,14 @@ function About() {
       </div>
       <Card
         className="grid place-items-center border-none rounded-none"
-        style={{ backgroundColor: "#14222d", color: "#fff" }}
+        style={{ backgroundColor: "#fffcfcff" }}
       >
-        <div className="sm:flex sm:gap-14 2xl:px-72  sm:my-20 my-10 ">
+        <div className="sm:flex sm:gap-14 2xl:px-72 sm:my-20">
           <div className="sm:w-1/2">
             <div className="font-semibold" style={{ color: "#0f868e" }}>
               About Company
             </div>
-            <h1 className="font-bold text-3xl">Mero Real Estate</h1>
+            <h1 className="font-bold text-3xl">Swornim Real Estate</h1>
             <div className="text-justify text-md leading-loose font-light">
               Mero Real Estate South Australia is a reputable and highly
               regarded real estate agency dedicated to serving clients
@@ -80,9 +78,9 @@ function About() {
       </Card>
 
       {/* explore section */}
-      <Card
+      {/* <Card
         className="flex justify-center  text-white 2xl:px-40 py-20 border-none rounded-none"
-        style={{ backgroundColor: "#14222d" }}
+        style={{ backgroundColor: "#14383F" }}
       >
         <span className="font-bold text-3xl text-center">Explore More</span>
 
@@ -106,7 +104,7 @@ function About() {
             </Accordion.Panel>
           </Accordion>
         ))}
-      </Card>
+      </Card> */}
 
       {/* location section */}
       <Card className="2xl:px-40 bg-white rounded-none">
@@ -118,35 +116,35 @@ function About() {
 
 export default About;
 
-const exploreData = [
-  {
-    title: "Expertise and Local Knowledge",
-    content:
-      "At Mero Real Estate, we pride ourselves on our extensive expertise and local knowledge. Our team of seasoned professionals possesses an in-depth understanding of Australia’s dynamic real estate market, ensuring you receive the most accurate and up-to-date advice. Whether you’re a first-time homebuyer, an experienced investor, or seeking a luxury property, we have the expertise to meet your unique requirements.",
-  },
-  {
-    title: "Wide Range of Properties",
-    content:
-      "Discover an extensive portfolio of properties that capture the essence of Australia’s diverse landscapes and architectural styles. From breathtaking beachfront villas along the pristine coastlines to elegant urban penthouses in bustling city centers, Mero Real Estate showcases an array of options that cater to your preferences and aspirations. Explore our collection and find the property that resonates with your vision of the perfect home.",
-  },
-  {
-    title: "Personalized Service",
-    content:
-      "At Mero Real Estate, we understand that buying or selling a property is a deeply personal endeavor. Our dedicated team goes above and beyond to provide personalized service, tailoring every interaction to your specific needs. We listen attentively to your requirements, offering expert advice, conducting thorough market research, and guiding you through the entire process, ensuring a seamless and stress-free experience from start to finish.",
-  },
-  {
-    title: "Exclusive Opportunities",
-    content:
-      "As a trusted real estate partner, Mero Real Estate has access to an exclusive network of properties and off-market opportunities. We connect you with hidden gems and exclusive listings that are not publicly available, allowing you to gain a competitive edge in the market. Our aim is to provide you with unique opportunities that align with your vision and surpass your expectations.",
-  },
-  {
-    title: "Integrity and Transparency",
-    content:
-      "At the core of Mero Real Estate’s values lie integrity and transparency. We uphold the highest ethical standards in all our dealings, maintaining open and honest communication throughout the buying or selling process. Our commitment to transparency ensures that you have all the necessary information to make informed decisions, fostering trust and building long-lasting relationships.",
-  },
-  {
-    title: "Unlock the door to your dream home with Mero Real Estate",
-    content:
-      "Contact us today to embark on a remarkable journey towards finding the perfect property that reflects your unique lifestyle and aspirations. Experience the difference of working with a dedicated team committed to delivering exceptional service and helping you make your real estate dreams come true.",
-  },
-];
+// const exploreData = [
+//   {
+//     title: "Expertise and Local Knowledge",
+//     content:
+//       "At Mero Real Estate, we pride ourselves on our extensive expertise and local knowledge. Our team of seasoned professionals possesses an in-depth understanding of Australia’s dynamic real estate market, ensuring you receive the most accurate and up-to-date advice. Whether you’re a first-time homebuyer, an experienced investor, or seeking a luxury property, we have the expertise to meet your unique requirements.",
+//   },
+//   {
+//     title: "Wide Range of Properties",
+//     content:
+//       "Discover an extensive portfolio of properties that capture the essence of Australia’s diverse landscapes and architectural styles. From breathtaking beachfront villas along the pristine coastlines to elegant urban penthouses in bustling city centers, Mero Real Estate showcases an array of options that cater to your preferences and aspirations. Explore our collection and find the property that resonates with your vision of the perfect home.",
+//   },
+//   {
+//     title: "Personalized Service",
+//     content:
+//       "At Mero Real Estate, we understand that buying or selling a property is a deeply personal endeavor. Our dedicated team goes above and beyond to provide personalized service, tailoring every interaction to your specific needs. We listen attentively to your requirements, offering expert advice, conducting thorough market research, and guiding you through the entire process, ensuring a seamless and stress-free experience from start to finish.",
+//   },
+//   {
+//     title: "Exclusive Opportunities",
+//     content:
+//       "As a trusted real estate partner, Mero Real Estate has access to an exclusive network of properties and off-market opportunities. We connect you with hidden gems and exclusive listings that are not publicly available, allowing you to gain a competitive edge in the market. Our aim is to provide you with unique opportunities that align with your vision and surpass your expectations.",
+//   },
+//   {
+//     title: "Integrity and Transparency",
+//     content:
+//       "At the core of Mero Real Estate’s values lie integrity and transparency. We uphold the highest ethical standards in all our dealings, maintaining open and honest communication throughout the buying or selling process. Our commitment to transparency ensures that you have all the necessary information to make informed decisions, fostering trust and building long-lasting relationships.",
+//   },
+//   {
+//     title: "Unlock the door to your dream home with Mero Real Estate",
+//     content:
+//       "Contact us today to embark on a remarkable journey towards finding the perfect property that reflects your unique lifestyle and aspirations. Experience the difference of working with a dedicated team committed to delivering exceptional service and helping you make your real estate dreams come true.",
+//   },
+// ];
