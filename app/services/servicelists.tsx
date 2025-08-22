@@ -83,53 +83,60 @@ const ServiceLists: React.FC = () => {
   };
 
   return (
-    <div className="py-14 mb-10 bg-white">
-      <div className="container mx-auto flex">
-        <div className="flex items-center pr-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 [writing-mode:vertical-rl] rotate-180">
-            Our Services
-          </h2>
+    <div className="py-14 mb-10" style={{ backgroundColor: "#fff" }}>
+      <h2 className="mb-7 pt-7 text-3xl md:text-4xl text-center font-bold text-blue-900">
+        Our Services
+      </h2>
+      {fetchError ? (
+        <div className="text-red-500 mt-4 text-center">
+          Failed to fetch services. Please try again later.
         </div>
-
-        <div className="flex-1 pt-7 pb-7 px-4 sm:px-6 lg:px-8">
-          {fetchError ? (
-            <div className="text-red-500 mt-4 text-center">
-              Failed to fetch services. Please try again later.
-            </div>
-          ) : isLoading ? (
-            <div className="relative w-full h-64 flex justify-center items-center">
-              <Spinner size="xl" />
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {serviceLists
-                .filter((service) => service.status === true)
-                .map((service) => (
-                  <Link
-                    href={`/services/serviceWiseProduct/${encodeURIComponent(
-                      service.categoryTitle
-                    )}/${service.id}`}
-                    key={service.id}
+      ) : isLoading ? (
+        <div className="relative w-full h-64 flex justify-center items-center">
+          <Spinner size="xl" />
+        </div>
+      ) : (
+        <div className="container mx-auto pt-7 pb-7 px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {serviceLists
+              .filter((service) => service.status === true)
+              .map((service) => (
+                <Link
+                  href={`/services/serviceWiseProduct/${encodeURIComponent(
+                    service.categoryTitle
+                  )}/${service.id}`}
+                  key={service.id}
+                >
+                  <div
+                    className={`${styles.zoomEffect} max-w-sm mx-auto group transition-all`}
                   >
-                    <div
-                      className={`${styles.zoomEffect} max-w-sm mx-auto group transition-all`}
+                    <Card
+                      imgSrc={`${SERVER_URL}${service.thumbnailImagePath}`}
+                      className="h-50 hover:bg-[#F8BC4C] transition ease-in-out duration-500 border-none"
+                      theme={customTheme}
                     >
-                      <Card
-                        imgSrc={`${SERVER_URL}${service.thumbnailImagePath}`}
-                        className="h-50 hover:bg-[#F8BC4C] transition ease-in-out duration-500 border-none"
-                        theme={customTheme}
-                      >
-                        <h5 className="font-semibold text-lg md:text-xl mb-2 text-black text-center group-hover:text-white">
-                          {service.categoryTitle}
-                        </h5>
-                      </Card>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          )}
+                      <h5 className="font-semibold text-lg md:text-xl mb-2 text-black text-center group-hover:text-white">
+                        {service.categoryTitle}
+                      </h5>
+                      {/* <p>
+                        Total:
+                        <span className="font-bold">
+                          {
+                            products.filter(
+                              (product) =>
+                                product.status === true &&
+                                product.categoryId === service.id
+                            ).length
+                          }
+                        </span>
+                      </p> */}
+                    </Card>
+                  </div>
+                </Link>
+              ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

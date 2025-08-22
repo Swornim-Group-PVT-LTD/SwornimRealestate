@@ -217,93 +217,88 @@ const ProductByPrice: React.FC = () => {
 
   return (
     <div className="px-4 pt-16 md:pt-0 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto md:py-8 flex">
-        <div className="flex items-start lg:items-center lg:-ml-20  sm:pr-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 [writing-mode:vertical-rl] rotate-180">
-            Recent On Sale and Rent
-          </h2>
+      <div className="max-w-7xl mx-auto md:py-8">
+        <h2 className="text-3xl md:text-4xl text-center font-bold text-blue-900 mb-6">
+          Sold and Leased
+        </h2>
+        <div className="mb-6 flex flex-col sm:flex-row justify-center sm:justify-start gap-2">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none"
+          />
+          <Button
+            style={{ backgroundColor: "#F8BC4C" }}
+            onClick={() => setSearchTerm("")}
+            className="bg-gray-300 text-white px-4 py-2 rounded-lg focus:outline-none"
+          >
+            <BiSearchAlt className="mr-1" />
+            Search
+          </Button>
         </div>
 
-        <div>
-          <div className="mb-6 flex flex-col sm:flex-row justify-center sm:justify-start gap-2">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none"
-            />
-            <Button
-              style={{ backgroundColor: "#F8BC4C" }}
-              onClick={() => setSearchTerm("")}
-              className="bg-gray-300 text-white px-4 py-2 rounded-lg focus:outline-none"
-            >
-              <BiSearchAlt className="mr-1" />
-              Search
-            </Button>
+        {fetchError ? (
+          <div className="text-red-500 mt-4 text-center">
+            Failed to fetch data. Please try again later.
           </div>
-
-          {fetchError ? (
-            <div className="text-red-500 mt-4 text-center">
-              Failed to fetch data. Please try again later.
-            </div>
-          ) : isLoading ? (
-            <div className="relative w-full h-64 flex justify-center items-center">
-              <Spinner size="xl" />
-            </div>
-          ) : (
-            <div>
-              {filteredProducts.length === 0 ? (
-                <div className="text-center text-gray-500">
-                  No products found.
-                </div>
-              ) : (
-                <Tabs onActiveTabChange={handleTabChange}>
-                  <Tabs.Item title="Sold" active={activeTab === "sold"}>
-                    <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                      {getPaginatedProducts(soldProducts, currentSoldPage).map(
-                        renderProductCard
-                      )}
-                    </div>
-                    {soldProducts.length > 0 && (
-                      <div className="mt-8 flex justify-end">
-                        <Pagination
-                          currentPage={currentSoldPage}
-                          totalPages={totalSoldPages}
-                          onPageChange={setCurrentSoldPage}
-                        />
-                      </div>
+        ) : isLoading ? (
+          <div className="relative w-full h-64 flex justify-center items-center">
+            <Spinner size="xl" />
+          </div>
+        ) : (
+          <div>
+            {filteredProducts.length === 0 ? (
+              <div className="text-center text-gray-500">
+                No products found.
+              </div>
+            ) : (
+              <Tabs onActiveTabChange={handleTabChange}>
+                <Tabs.Item title="Sold" active={activeTab === "sold"}>
+                  <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    {getPaginatedProducts(soldProducts, currentSoldPage).map(
+                      renderProductCard
                     )}
-                  </Tabs.Item>
-
-                  <Tabs.Item title="Leased" active={activeTab === "leased"}>
-                    <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                      {leasedProducts.length === 0 ? (
-                        <div className="text-center text-gray-500">
-                          No products leased.
-                        </div>
-                      ) : (
-                        getPaginatedProducts(
-                          leasedProducts,
-                          currentLeasedPage
-                        ).map(renderProductCard)
-                      )}
+                  </div>
+                  {soldProducts.length > 0 && (
+                    <div className="mt-8 flex justify-end">
+                      <Pagination
+                        currentPage={currentSoldPage}
+                        totalPages={totalSoldPages}
+                        onPageChange={setCurrentSoldPage}
+                      />
                     </div>
-                    {leasedProducts.length > 0 && (
-                      <div className="mt-8 flex justify-end">
-                        <Pagination
-                          currentPage={currentLeasedPage}
-                          totalPages={totalLeasedPages}
-                          onPageChange={setCurrentLeasedPage}
-                        />
+                  )}
+                </Tabs.Item>
+
+                <Tabs.Item title="Leased" active={activeTab === "leased"}>
+                  <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    {leasedProducts.length === 0 ? (
+                      <div className="text-center text-gray-500">
+                        No products leased.
                       </div>
+                    ) : (
+                      getPaginatedProducts(
+                        leasedProducts,
+                        currentLeasedPage
+                      ).map(renderProductCard)
                     )}
-                  </Tabs.Item>
-                </Tabs>
-              )}
-            </div>
-          )}
-        </div>
+                  </div>
+                  {leasedProducts.length > 0 && (
+                    <div className="mt-8 flex justify-end">
+                      <Pagination
+                        currentPage={currentLeasedPage}
+                        totalPages={totalLeasedPages}
+                        onPageChange={setCurrentLeasedPage}
+                      />
+                    </div>
+                  )}
+                </Tabs.Item>
+              </Tabs>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
