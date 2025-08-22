@@ -76,153 +76,160 @@ const ProductByPrice: React.FC = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto py-8">
-        <h2 className="text-2xl md:text-4xl text-center font-bold text-black mb-6">
-          Leased And Sold Property
-        </h2>
-        {/* Search Box */}
-        <div className="mb-6 flex flex-col sm:flex-row justify-center sm:justify-start gap-2">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none"
-          />
-          <Button
-            style={{ backgroundColor: "#F8BC4C" }}
-            onClick={() => setSearchTerm("")}
-            className="bg-gray-300 text-white px-4 py-2 rounded-lg focus:outline-none"
-          >
-            <BiSearchAlt className="mr-1" />
-            Search
-          </Button>
+        <div>
+          <h2 className="text-2xl md:text-4xl text-center font-bold text-black mb-6">
+            Leased And Sold Property
+          </h2>
         </div>
-        {/* Search Box ends */}
-        {fetchError ? (
-          <div className="text-red-500 mt-4 text-center">
-            Failed to fetch data. Please try again later.
-          </div>
-        ) : isLoading ? (
-          <div className="relative w-full h-64 flex justify-center items-center">
-            <Spinner size="xl" />
-          </div>
-        ) : (
-          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-            {paginatedProducts
-              .filter((product) => product.status === true) // Filter by status
-              .map((product) => (
-                <div key={product.id} className="group">
-                  <Link
-                    href={`product/hotlistproduct/hotlistProductView/${product.id}`}
-                  >
-                    <Card
-                      imgSrc={`${SERVER_URL}${product.thumbnailImgPath}`}
-                      className="w-full max-w-lg"
-                    >
-                      <h3 className="text-sm text-gray-700 mb-2">
-                        {product.productName}
-                      </h3>
-                      <div className="grid grid-cols-2 mb-2">
-                        <div>
-                          <span className="inline-flex items-baseline">
-                            <HiPencilAlt /> &nbsp;
-                            <span>{product.area} m.sq</span>
-                          </span>
-                        </div>
-                        <div>
-                          <span className="inline-flex float-right items-baseline">
-                            <Badge color="warning" className="text-sm">
-                              {product.propertyStatusValue.toString()}
-                            </Badge>
-                          </span>
-                        </div>
-                      </div>
 
-                      <div className="text-lg font-medium text-gray-900 mb-2">
-                        <div className="grid grid-cols-2">
-                          <div>${product.price}</div>
-                          <div className="mt-1">
-                            <span className="float-right">
-                              <HiEye />
+        <div>
+          {/* Search Box */}
+          <div className="mb-6 flex flex-col sm:flex-row justify-center sm:justify-start gap-2">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none"
+            />
+            <Button
+              style={{ backgroundColor: "#F8BC4C" }}
+              onClick={() => setSearchTerm("")}
+              className="bg-gray-300 text-white px-4 py-2 rounded-lg focus:outline-none"
+            >
+              <BiSearchAlt className="mr-1" />
+              Search
+            </Button>
+          </div>
+          {/* Search Box ends */}
+          {fetchError ? (
+            <div className="text-red-500 mt-4 text-center">
+              Failed to fetch data. Please try again later.
+            </div>
+          ) : isLoading ? (
+            <div className="relative w-full h-64 flex justify-center items-center">
+              <Spinner size="xl" />
+            </div>
+          ) : (
+            <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+              {paginatedProducts
+                .filter((product) => product.status === true) // Filter by status
+                .map((product) => (
+                  <div key={product.id} className="group">
+                    <Link
+                      href={`product/hotlistproduct/hotlistProductView/${product.id}`}
+                    >
+                      <Card
+                        imgSrc={`${SERVER_URL}${product.thumbnailImgPath}`}
+                        className="w-full max-w-lg"
+                      >
+                        <h3 className="text-sm text-gray-700 mb-2">
+                          {product.productName}
+                        </h3>
+                        <div className="grid grid-cols-2 mb-2">
+                          <div>
+                            <span className="inline-flex items-baseline">
+                              <HiPencilAlt /> &nbsp;
+                              <span>{product.area} m.sq</span>
+                            </span>
+                          </div>
+                          <div>
+                            <span className="inline-flex float-right items-baseline">
+                              <Badge color="warning" className="text-sm">
+                                {product.propertyStatusValue.toString()}
+                              </Badge>
                             </span>
                           </div>
                         </div>
-                      </div>
-                      <div className="grid grid-cols-3 gap-4 mb-2">
-                        <div>
-                          <table>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <Image
-                                    src={Bedroom}
-                                    alt="Bedroom Icon"
-                                    width={20}
-                                    height={20}
-                                  />
-                                </td>
-                                <td className="pl-2">
-                                  {product.roomCount < 1
-                                    ? "-"
-                                    : product.roomCount}
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+
+                        <div className="text-lg font-medium text-gray-900 mb-2">
+                          <div className="grid grid-cols-2">
+                            <div>${product.price}</div>
+                            <div className="mt-1">
+                              <span className="float-right">
+                                <HiEye />
+                              </span>
+                            </div>
+                          </div>
                         </div>
-                        <div>
-                          <table>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <Image
-                                    src={Bathroom}
-                                    alt="Bathroom Icon"
-                                    width={20}
-                                    height={20}
-                                  />
-                                </td>
-                                <td className="pl-2">
-                                  {product.bathRoomCount
-                                    ? "-"
-                                    : product.bathRoomCount}
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        <div className="grid grid-cols-3 gap-4 mb-2">
+                          <div>
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <Image
+                                      src={Bedroom}
+                                      alt="Bedroom Icon"
+                                      width={20}
+                                      height={20}
+                                    />
+                                  </td>
+                                  <td className="pl-2">
+                                    {product.roomCount < 1
+                                      ? "-"
+                                      : product.roomCount}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div>
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <Image
+                                      src={Bathroom}
+                                      alt="Bathroom Icon"
+                                      width={20}
+                                      height={20}
+                                    />
+                                  </td>
+                                  <td className="pl-2">
+                                    {product.bathRoomCount
+                                      ? "-"
+                                      : product.bathRoomCount}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div>
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <Image
+                                      src={carIcon}
+                                      alt="Car Icon"
+                                      width={20}
+                                      height={20}
+                                    />
+                                  </td>
+                                  <td className="pl-2">
+                                    {product.parking < 1
+                                      ? "-"
+                                      : product.parking}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
-                        <div>
-                          <table>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <Image
-                                    src={carIcon}
-                                    alt="Car Icon"
-                                    width={20}
-                                    height={20}
-                                  />
-                                </td>
-                                <td className="pl-2">
-                                  {product.parking < 1 ? "-" : product.parking}
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </Card>
-                  </Link>
-                </div>
-              ))}
+                      </Card>
+                    </Link>
+                  </div>
+                ))}
+            </div>
+          )}
+          <div className="mt-8 flex justify-end">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={onPageChange}
+            />
           </div>
-        )}
-        <div className="mt-8 flex justify-end">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={onPageChange}
-          />
         </div>
       </div>
     </div>
