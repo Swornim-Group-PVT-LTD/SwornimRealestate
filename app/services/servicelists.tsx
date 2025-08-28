@@ -83,15 +83,15 @@ const ServiceLists: React.FC = () => {
   };
 
   return (
-    <div className="py-14 mb-10 bg-white">
-      <div className="container mx-auto flex">
-        <div className="flex items-center pr-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 [writing-mode:vertical-rl] rotate-180">
+    <div className="py-14 mb-10 bg-white lg:relative z-10">
+      <div className="lg:container lg:mx-auto lg:flex">
+        <div className="lg:flex items-center lg:pr-8">
+          <h2 className="lg:absolute lg:left-10 text-center text-3xl md:text-4xl font-bold text-blue-900 lg:[writing-mode:vertical-rl] lg:rotate-180">
             Our Services
           </h2>
         </div>
 
-        <div className="flex-1 pt-7 pb-7 px-4 sm:px-6 lg:px-8">
+        <div className=" lg:flex-1 pt-7 pb-7 px-4 sm:px-6 lg:px-8">
           {fetchError ? (
             <div className="text-red-500 mt-4 text-center">
               Failed to fetch services. Please try again later.

@@ -59,10 +59,13 @@ const Agent = () => {
   };
 
   return (
-    <div className="py-16 mb-20" style={{ backgroundColor: "#fff" }}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex">
-        <div className="flex items-start lg:items-center pr-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 [writing-mode:vertical-rl] rotate-180">
+    <div
+      className="py-16 mb-20 relative z-10"
+      style={{ backgroundColor: "#fff" }}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:flex">
+        <div className="   lg:absolute lg:left-10 top-[30%]">
+          <h2 className="text-center text-3xl md:text-4xl font-bold text-blue-900 lg:[writing-mode:vertical-rl] lg:rotate-180">
             Meet Our Team
           </h2>
         </div>

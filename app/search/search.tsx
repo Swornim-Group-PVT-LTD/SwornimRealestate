@@ -39,7 +39,11 @@ interface FiltersType {
   CategoryId: string;
 }
 
-const Search = () => {
+interface SearchProps {
+  onClose?: () => void;
+}
+
+const Search = ({ onClose }: SearchProps) => {
   const router = useRouter();
   const [selected, setSelected] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -102,13 +106,13 @@ const Search = () => {
   }, [searchParams]);
 
   const handleApplyFilters = () => {
-    // Serialize the filters object into a JSON string//
     const query = new URLSearchParams({
       filters: JSON.stringify(filters),
     }).toString();
-
-    // Use router.push to navigate to the search results page//
     router.push(`/search/results?${query}`);
+    if (onClose) {
+      onClose();
+    }
   };
 
   const fetchCategory = async () => {
@@ -174,7 +178,7 @@ const Search = () => {
   };
 
   return (
-    <div className="flex justify-center mx-auto rounded-lg">
+    <div className="flex justify-center mx-auto rounded-lg z-50 ">
       <div id={Styles.desktopView}>
         <div className={Styles.fixedFormContainer}>
           <form className="mx-auto p-4 shadow-md rounded-lg">
@@ -183,13 +187,13 @@ const Search = () => {
                 <div className="font-semibold">Category</div>
                 <select
                   id="propertyType"
-                  value={filtersFromSearch.CategoryId || ""} // Default value
+                  value={filtersFromSearch.CategoryId || ""}
                   onChange={(e) => {
                     const value = e.target.value;
                     setFiltersFromSearch((prevFilters) => ({
                       ...prevFilters,
                       CategoryId: value,
-                      SubCategoryId: "", // Reset subcategory when category changes
+                      SubCategoryId: "",
                     }));
                     updateFilters("CategoryId", value);
                     setSelectedCategory(value);
@@ -617,7 +621,8 @@ const Search = () => {
 
               <div className="flex justify-center">
                 <Button
-                  className="w-full md:w-auto flex items-center"  style={{ backgroundColor: "#F8BC4C" }}
+                  className="w-full md:w-auto flex items-center"
+                  style={{ backgroundColor: "#F8BC4C" }}
                   onClick={handleApplyFilters}
                 >
                   <BiSearchAlt className="mr-2" />

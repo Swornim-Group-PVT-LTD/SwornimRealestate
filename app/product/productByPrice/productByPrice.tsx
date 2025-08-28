@@ -216,10 +216,10 @@ const ProductByPrice: React.FC = () => {
   );
 
   return (
-    <div className="px-4 pt-16 md:pt-0 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto md:py-8 flex">
-        <div className="flex items-start lg:items-center lg:-ml-20  sm:pr-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 [writing-mode:vertical-rl] rotate-180">
+    <div className="px-4 pt-16 md:pt-0 sm:px-6 lg:px-8 relative">
+      <div className="max-w-7xl mx-auto md:py-8 ">
+        <div className="lg:absolute lg:left-10 top-[30%]">
+          <h2 className="text-center text-3xl md:text-4xl font-bold text-blue-900 lg:[writing-mode:vertical-rl] lg:rotate-180">
             Recent On Sale and Rent
           </h2>
         </div>
