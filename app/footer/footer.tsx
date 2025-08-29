@@ -13,7 +13,10 @@ const FooterSection = () => {
   const [cDate, setcDate] = useState(new Date());
 
   return (
-    <div style={{ backgroundColor: "#14383F" }} className="overflow-hidden">
+    <div
+      style={{ backgroundColor: "#14383F" }}
+      className="overflow-hidden z-50 relative"
+    >
       <hr />
       <Footer
         container
@@ -67,7 +70,8 @@ const FooterSection = () => {
             style={{ backgroundColor: "#F8BC4C" }}
             className="py-5 -mx-10 -my-5 mt-5 "
           >
-            Developed by <Link href={`https://ism.com.np`}>Swornim Group PVT LTD @</Link>{" "}
+            Developed by{" "}
+            <Link href={`https://ism.com.np`}>Swornim Group PVT LTD @</Link>{" "}
             {cDate.getFullYear()}
           </div>
         </div>

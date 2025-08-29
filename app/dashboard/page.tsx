@@ -14,16 +14,16 @@ const Dashboard = () => {
       <div>
         <CarouselImage />
       </div>
-      <div>
+      {/* <div>
         <Search />
-      </div>
+      </div> */}
       <div className="-my-14">
         <Servicelists />
       </div>
       <HighlightedProduct />
 
       {/* <ProductCount /> */}
-     <div style={{ backgroundColor: "#fff" }}>
+      <div style={{ backgroundColor: "#fff" }}>
         <ProductsByPrice />
       </div>
       <div className="">

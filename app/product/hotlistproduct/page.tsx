@@ -96,28 +96,12 @@ const LatestProductView: React.FC = () => {
   };
 
   return (
-    <div className="p-10">
-      <div className="mx-auto max-w-7xl px-4 md:py-16 pt-5 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl text-center font-bold mb-7 text-white">
-          Recent On Sale and Rent
-        </h2>
-        {/* Search Box */}
-        <div className="mb-6 flex flex-col sm:flex-row justify-center sm:justify-end gap-2">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none"
-          />
-          <Button
-            style={{ backgroundColor: "#F8BC4C" }}
-            onClick={() => setSearchTerm("")}
-            className="bg-gray-300 text-white px-4 py-2 rounded-lg focus:outline-none"
-          >
-            <BiSearchAlt className="mr-1" />
-            Search
-          </Button>
+    <div className="p-10 relative">
+      <div className="mx-auto max-w-7xl px-4 md:py-16 pt-5 sm:px-6 lg:px-8 ">
+        <div className="lg:absolute lg:left-10  ">
+          <h2 className="text-3xl md:text-4xl text-center font-bold text-white lg:[writing-mode:vertical-rl] lg:rotate-180">
+            Recent On Sale and Rent
+          </h2>
         </div>
         {/* Search Box ends */}
         {fetchError ? (

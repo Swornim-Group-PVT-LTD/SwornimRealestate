@@ -83,32 +83,33 @@ const ServiceLists: React.FC = () => {
   };
 
   return (
-    <div className="py-14 mb-10" style={{ backgroundColor: "#fff" }}>
-      <h2 className="mb-7 pt-7 text-3xl md:text-4xl text-center font-bold text-blue-900">
-        Our Services
-      </h2>
-      {fetchError ? (
-        <div className="text-red-500 mt-4 text-center">
-          Failed to fetch services. Please try again later.
+    <div className="py-14 mb-10 bg-white lg:relative z-10">
+      <div className="lg:container lg:mx-auto lg:flex">
+        <div className="lg:flex items-center lg:pr-8">
+          <h2 className="lg:absolute lg:left-10 text-center text-3xl md:text-4xl font-bold text-blue-900 lg:[writing-mode:vertical-rl] lg:rotate-180">
+            Our Services
+          </h2>
         </div>
-      ) : isLoading ? (
-        <div className="relative w-full h-64 flex justify-center items-center">
-          <Spinner size="xl" />
-        </div>
-      ) : (
-        <div className="container mx-auto pt-7 pb-7 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {serviceLists
-              .filter((service) => service.status === true)
-              .map((service) => (
-                <Link
-                  href={`/services/serviceWiseProduct/${encodeURIComponent(
-                    service.categoryTitle
-                  )}/${service.id}`}
-                  key={service.id}
-                >
-                  <div
-                    className={`${styles.zoomEffect} max-w-sm mx-auto group transition-all`}
+
+        <div className=" lg:flex-1 pt-7 pb-7 px-4 sm:px-6 lg:px-8">
+          {fetchError ? (
+            <div className="text-red-500 mt-4 text-center">
+              Failed to fetch services. Please try again later.
+            </div>
+          ) : isLoading ? (
+            <div className="relative w-full h-64 flex justify-center items-center">
+              <Spinner size="xl" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {serviceLists
+                .filter((service) => service.status === true)
+                .map((service) => (
+                  <Link
+                    href={`/services/serviceWiseProduct/${encodeURIComponent(
+                      service.categoryTitle
+                    )}/${service.id}`}
+                    key={service.id}
                   >
                     <Card
                       imgSrc={`${SERVER_URL}${service.thumbnailImagePath}`}
