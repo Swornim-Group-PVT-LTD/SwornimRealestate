@@ -220,7 +220,7 @@ const ProductByPrice: React.FC = () => {
       <div className="max-w-7xl mx-auto md:py-8 ">
         <div className="lg:absolute lg:left-10 top-[30%]">
           <h2 className="text-center text-3xl md:text-4xl font-bold text-blue-900 lg:[writing-mode:vertical-rl] lg:rotate-180">
-            Recent On Sale and Rent
+            Sold and Leased
           </h2>
         </div>
 

@@ -25,7 +25,7 @@ interface ProductList {
 const customTheme: CustomFlowbiteTheme["card"] = {
   img: {
     horizontal: {
-      off: "rounded-t-lg object-cover aspect-[4/3] ",
+      off: "rounded-t-lg object-cover aspect-[4/3]",
     },
   },
 };
@@ -91,7 +91,7 @@ const ServiceLists: React.FC = () => {
           </h2>
         </div>
 
-        <div className=" lg:flex-1 pt-7 pb-7 px-4 sm:px-6 lg:px-8">
+        <div className="lg:flex-1 pt-7 pb-7 px-4 sm:px-6 lg:px-8">
           {fetchError ? (
             <div className="text-red-500 mt-4 text-center">
               Failed to fetch services. Please try again later.
@@ -112,16 +112,21 @@ const ServiceLists: React.FC = () => {
                     key={service.id}
                   >
                     <Card
-                      imgSrc={`${SERVER_URL}${service.thumbnailImagePath}`}
+                      imgSrc={
+                        service.thumbnailImagePath
+                          ? `${SERVER_URL}${service.thumbnailImagePath}`
+                          : "/no-image.png"
+                      }
                       className="h-50 hover:bg-[#F8BC4C] transition ease-in-out duration-500 border-none"
                       theme={customTheme}
                     >
                       <h5 className="font-semibold text-lg md:text-xl mb-2 text-black text-center group-hover:text-white">
                         {service.categoryTitle}
                       </h5>
-                      {/* <p>
+                      {/* Uncomment if you want product count per category */}
+                      {/* <p className="text-center">
                         Total:
-                        <span className="font-bold">
+                        <span className="font-bold ml-1">
                           {
                             products.filter(
                               (product) =>
@@ -132,12 +137,12 @@ const ServiceLists: React.FC = () => {
                         </span>
                       </p> */}
                     </Card>
-                  </div>
-                </Link>
-              ))}
-          </div>
+                  </Link>
+                ))}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };

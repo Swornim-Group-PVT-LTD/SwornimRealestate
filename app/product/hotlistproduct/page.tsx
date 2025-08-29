@@ -100,7 +100,7 @@ const LatestProductView: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 md:py-16 pt-5 sm:px-6 lg:px-8 ">
         <div className="lg:absolute lg:left-10  ">
           <h2 className="text-3xl md:text-4xl text-center font-bold text-white lg:[writing-mode:vertical-rl] lg:rotate-180">
-            Recent On Sale and Rent
+         Sale and Rent
           </h2>
         </div>
         {/* Search Box ends */}
