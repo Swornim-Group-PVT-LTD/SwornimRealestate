@@ -19,9 +19,9 @@ const NavbarItem = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
+
   const handleTabClick = (path: string) => {
     setActiveTab(path);
-    setIsOpen(false);
   };
 
   const openSearchModal = () => {
@@ -131,6 +131,7 @@ const NavbarItem = () => {
         </Modal.Body>
       </Modal>
     </>
+       
   );
 };
 

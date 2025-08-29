@@ -103,93 +103,66 @@ const LatestProductView: React.FC = () => {
             Recent On Sale and Rent
           </h2>
         </div>
-
-        <div>
-          {/* Search Box */}
-          <div className="mb-6 flex flex-col sm:flex-row justify-center sm:justify-end gap-2">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none"
-            />
-            <Button
-              style={{ backgroundColor: "#F8BC4C" }}
-              onClick={() => setSearchTerm("")}
-              className="bg-gray-300 text-white px-4 py-2 rounded-lg focus:outline-none"
-            >
-              <BiSearchAlt className="mr-1" />
-              Search
-            </Button>
+        {/* Search Box ends */}
+        {fetchError ? (
+          <div className="text-red-500 mt-4 text-center">
+            Failed to fetch data. Please try again later.
           </div>
-          {/* Search Box ends */}
-          {fetchError ? (
-            <div className="text-red-500 mt-4 text-center">
-              Failed to fetch data. Please try again later.
-            </div>
-          ) : isLoading ? (
-            <div className="relative w-full h-64 flex justify-center items-center">
-              <Spinner size="xl" />
-            </div>
-          ) : (
-            <div className="mt-6 -mx-2 md:px-5 lg:px-0">
-              {latestProducts.length === 0 ? (
-                <div className="text-center text-gray-500">
-                  Oops! No properties found at the moment.
-                </div>
-              ) : (
-                <Slider {...settings}>
-                  {latestProducts
-                    .filter((product) => product.status === true) // Filter by status
-                    .map((product) => {
-                      if (
-                        product.propertyStatusValue === "Rent" ||
-                        product.propertyStatusValue === "Buy"
-                      ) {
-                        return (
-                          <div key={product.id} className="px-3 ">
-                            <Link
-                              href={`/product/hotlistproduct/hotlistProductView/${product.id}`}
+        ) : isLoading ? (
+          <div className="relative w-full h-64 flex justify-center items-center">
+            <Spinner size="xl" />
+          </div>
+        ) : (
+          <div className="mt-6 -mx-2 md:px-5 lg:px-0">
+            {latestProducts.length === 0 ? (
+              <div className="text-center text-gray-500">
+                Oops! No properties found at the moment.
+              </div>
+            ) : (
+              <Slider {...settings}>
+                {latestProducts
+                  .filter((product) => product.status === true) // Filter by status
+                  .map((product) => {
+                    if (
+                      product.propertyStatusValue === "Rent" ||
+                      product.propertyStatusValue === "Buy"
+                    ) {
+                      return (
+                        <div key={product.id} className="px-3 ">
+                          <Link
+                            href={`/product/hotlistproduct/hotlistProductView/${product.id}`}
+                          >
+                            <Card
+                              imgSrc={
+                                product.thumbnailImgPath
+                                  ? `${SERVER_URL}${product.thumbnailImgPath}`
+                                  : logo.src
+                              }
+                              className="w-full max-w-lg shadow-md"
+                              style={{
+                                backgroundColor: "",
+                                color: "black",
+                              }}
+                              theme={customTheme}
                             >
-                              <Card
-                                imgSrc={
-                                  product.thumbnailImgPath
-                                    ? `${SERVER_URL}${product.thumbnailImgPath}`
-                                    : logo.src
-                                }
-                                className="w-full max-w-lg shadow-md"
-                                style={{
-                                  backgroundColor: "",
-                                  color: "black",
-                                }}
-                                theme={customTheme}
-                              >
-                                <h3 className="text-lg font-semibold   truncate">
-                                  {product.productName}
-                                </h3>
-                                <div className="flex w-full justify-between">
-                                  <div>
-                                    <span className="inline-flex float-right items-baseline">
-                                      <Badge
-                                        color="success"
-                                        className="text-sm"
-                                      >
-                                        {product.propertyStatusValue}
-                                      </Badge>
-                                    </span>
-                                  </div>
-                                  <div className="text-orange-500 hover:text-red-500 font-bold items-baseline">
-                                    {product.price === 0
-                                      ? "NA"
-                                      : `$${Intl.NumberFormat(
-                                          "en-US",
-                                          options
-                                        ).format(product.price)}`}
-                                  </div>
+                              <h3 className="text-lg font-semibold   truncate">
+                                {product.productName}
+                              </h3>
+                              <div className="flex w-full justify-between">
+                                <div>
+                                  <span className="inline-flex float-right items-baseline">
+                                    <Badge color="success" className="text-sm">
+                                      {product.propertyStatusValue}
+                                    </Badge>
+                                  </span>
+                                </div>
+                                <div className="text-orange-500 hover:text-red-500 font-bold items-baseline">
+                                  {product.price === 0 ? "NA" : `$${Intl.NumberFormat("en-US", options).format(product.price)}`}
                                 </div>
 
-                                {/* <div className=" text-lg font-medium text-gray-900 ">
+                              </div>
+
+                              {/* <div className=" text-lg font-medium text-gray-900 ">
                                 <div className="flex justify-between items-center">
                                   <div className=" text-orange-500 hover:text-red-500 font-bold">
                                     ${product.price}
@@ -199,60 +172,59 @@ const LatestProductView: React.FC = () => {
                                   </div>
                                 </div>
                               </div> */}
-                                <div className="flex justify-between  ">
-                                  <div className="flex items-center">
-                                    <Image
-                                      src={Bedroom}
-                                      alt="Bedroom Icon"
-                                      width={20}
-                                      height={20}
-                                    />
-                                    <span className="pl-2">
-                                      {product.roomCount < 1
-                                        ? "-"
-                                        : product.roomCount}
-                                    </span>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <Image
-                                      src={Bathroom}
-                                      alt="Bathroom Icon"
-                                      width={20}
-                                      height={20}
-                                    />
-                                    <span className="pl-2">
-                                      {product.bathRoomCount < 1
-                                        ? "-"
-                                        : product.bathRoomCount}
-                                    </span>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <Image
-                                      src={carIcon}
-                                      alt="Car Icon"
-                                      width={20}
-                                      height={20}
-                                    />
-                                    <span className="pl-2">
-                                      {product.parkingCount < 1
-                                        ? "-"
-                                        : product.parkingCount}
-                                    </span>
-                                  </div>
+                              <div className="flex justify-between  ">
+                                <div className="flex items-center">
+                                  <Image
+                                    src={Bedroom}
+                                    alt="Bedroom Icon"
+                                    width={20}
+                                    height={20}
+                                  />
+                                  <span className="pl-2">
+                                    {product.roomCount < 1
+                                      ? "-"
+                                      : product.roomCount}
+                                  </span>
                                 </div>
-                              </Card>
-                            </Link>
-                          </div>
-                        );
-                      } else {
-                        return null; // Return null if the condition is not met
-                      }
-                    })}
-                </Slider>
-              )}
-            </div>
-          )}
-        </div>
+                                <div className="flex items-center">
+                                  <Image
+                                    src={Bathroom}
+                                    alt="Bathroom Icon"
+                                    width={20}
+                                    height={20}
+                                  />
+                                  <span className="pl-2">
+                                    {product.bathRoomCount < 1
+                                      ? "-"
+                                      : product.bathRoomCount}
+                                  </span>
+                                </div>
+                                <div className="flex items-center">
+                                  <Image
+                                    src={carIcon}
+                                    alt="Car Icon"
+                                    width={20}
+                                    height={20}
+                                  />
+                                  <span className="pl-2">
+                                    {product.parkingCount < 1
+                                      ? "-"
+                                      : product.parkingCount}
+                                  </span>
+                                </div>
+                              </div>
+                            </Card>
+                          </Link>
+                        </div>
+                      );
+                    } else {
+                      return null; // Return null if the condition is not met
+                    }
+                  })}
+              </Slider>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -111,25 +111,33 @@ const ServiceLists: React.FC = () => {
                     )}/${service.id}`}
                     key={service.id}
                   >
-                    <div
-                      className={`${styles.zoomEffect} max-w-sm mx-auto group transition-all`}
+                    <Card
+                      imgSrc={`${SERVER_URL}${service.thumbnailImagePath}`}
+                      className="h-50 hover:bg-[#F8BC4C] transition ease-in-out duration-500 border-none"
+                      theme={customTheme}
                     >
-                      <Card
-                        imgSrc={`${SERVER_URL}${service.thumbnailImagePath}`}
-                        className="h-50 hover:bg-[#F8BC4C] transition ease-in-out duration-500 border-none"
-                        theme={customTheme}
-                      >
-                        <h5 className="font-semibold text-lg md:text-xl mb-2 text-black text-center group-hover:text-white">
-                          {service.categoryTitle}
-                        </h5>
-                      </Card>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          )}
+                      <h5 className="font-semibold text-lg md:text-xl mb-2 text-black text-center group-hover:text-white">
+                        {service.categoryTitle}
+                      </h5>
+                      {/* <p>
+                        Total:
+                        <span className="font-bold">
+                          {
+                            products.filter(
+                              (product) =>
+                                product.status === true &&
+                                product.categoryId === service.id
+                            ).length
+                          }
+                        </span>
+                      </p> */}
+                    </Card>
+                  </div>
+                </Link>
+              ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

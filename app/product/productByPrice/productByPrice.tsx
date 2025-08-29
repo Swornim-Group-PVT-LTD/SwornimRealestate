@@ -224,86 +224,66 @@ const ProductByPrice: React.FC = () => {
           </h2>
         </div>
 
-        <div>
-          <div className="mb-6 flex flex-col sm:flex-row justify-center sm:justify-start gap-2">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none"
-            />
-            <Button
-              style={{ backgroundColor: "#F8BC4C" }}
-              onClick={() => setSearchTerm("")}
-              className="bg-gray-300 text-white px-4 py-2 rounded-lg focus:outline-none"
-            >
-              <BiSearchAlt className="mr-1" />
-              Search
-            </Button>
+        {fetchError ? (
+          <div className="text-red-500 mt-4 text-center">
+            Failed to fetch data. Please try again later.
           </div>
-
-          {fetchError ? (
-            <div className="text-red-500 mt-4 text-center">
-              Failed to fetch data. Please try again later.
-            </div>
-          ) : isLoading ? (
-            <div className="relative w-full h-64 flex justify-center items-center">
-              <Spinner size="xl" />
-            </div>
-          ) : (
-            <div>
-              {filteredProducts.length === 0 ? (
-                <div className="text-center text-gray-500">
-                  No products found.
-                </div>
-              ) : (
-                <Tabs onActiveTabChange={handleTabChange}>
-                  <Tabs.Item title="Sold" active={activeTab === "sold"}>
-                    <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                      {getPaginatedProducts(soldProducts, currentSoldPage).map(
-                        renderProductCard
-                      )}
-                    </div>
-                    {soldProducts.length > 0 && (
-                      <div className="mt-8 flex justify-end">
-                        <Pagination
-                          currentPage={currentSoldPage}
-                          totalPages={totalSoldPages}
-                          onPageChange={setCurrentSoldPage}
-                        />
-                      </div>
+        ) : isLoading ? (
+          <div className="relative w-full h-64 flex justify-center items-center">
+            <Spinner size="xl" />
+          </div>
+        ) : (
+          <div>
+            {filteredProducts.length === 0 ? (
+              <div className="text-center text-gray-500">
+                No products found.
+              </div>
+            ) : (
+              <Tabs onActiveTabChange={handleTabChange}>
+                <Tabs.Item title="Sold" active={activeTab === "sold"}>
+                  <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    {getPaginatedProducts(soldProducts, currentSoldPage).map(
+                      renderProductCard
                     )}
-                  </Tabs.Item>
-
-                  <Tabs.Item title="Leased" active={activeTab === "leased"}>
-                    <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                      {leasedProducts.length === 0 ? (
-                        <div className="text-center text-gray-500">
-                          No products leased.
-                        </div>
-                      ) : (
-                        getPaginatedProducts(
-                          leasedProducts,
-                          currentLeasedPage
-                        ).map(renderProductCard)
-                      )}
+                  </div>
+                  {soldProducts.length > 0 && (
+                    <div className="mt-8 flex justify-end">
+                      <Pagination
+                        currentPage={currentSoldPage}
+                        totalPages={totalSoldPages}
+                        onPageChange={setCurrentSoldPage}
+                      />
                     </div>
-                    {leasedProducts.length > 0 && (
-                      <div className="mt-8 flex justify-end">
-                        <Pagination
-                          currentPage={currentLeasedPage}
-                          totalPages={totalLeasedPages}
-                          onPageChange={setCurrentLeasedPage}
-                        />
+                  )}
+                </Tabs.Item>
+
+                <Tabs.Item title="Leased" active={activeTab === "leased"}>
+                  <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    {leasedProducts.length === 0 ? (
+                      <div className="text-center text-gray-500">
+                        No products leased.
                       </div>
+                    ) : (
+                      getPaginatedProducts(
+                        leasedProducts,
+                        currentLeasedPage
+                      ).map(renderProductCard)
                     )}
-                  </Tabs.Item>
-                </Tabs>
-              )}
-            </div>
-          )}
-        </div>
+                  </div>
+                  {leasedProducts.length > 0 && (
+                    <div className="mt-8 flex justify-end">
+                      <Pagination
+                        currentPage={currentLeasedPage}
+                        totalPages={totalLeasedPages}
+                        onPageChange={setCurrentLeasedPage}
+                      />
+                    </div>
+                  )}
+                </Tabs.Item>
+              </Tabs>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
